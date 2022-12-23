@@ -1,4 +1,19 @@
+import { getProduct } from "../../firebase";
+import { useState, useEffect } from "react";
+
+interface Product {
+  price: number;
+  productName: string;
+}
+
 const Main = () => {
+  const [products, setProducts] = useState<any>([]);
+  useEffect(() => {
+    getProduct().then(data => setProducts(data));
+  }, []);
+
+  console.log(products);
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -44,10 +59,11 @@ const Main = () => {
                 alt="content"
               />
               <h3 className="tracking-widest text-green-500 text-xs font-medium title-font">
-                SUBTITLE
+                {products[0].price}
               </h3>
+
               <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                Colosseum Roma
+                {products[0].productName}
               </h2>
               <p className="leading-relaxed text-base">
                 Fingerstache flexitarian street art 8-bit waistcoat. Distillery
