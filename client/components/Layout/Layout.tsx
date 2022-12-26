@@ -1,4 +1,5 @@
-import Header from "./Header";
+// import Header from "./Header";
+import Header from "../@commons/Header/Header_bar";
 import Footer from "./Footer";
 
 const Layout = ({ children }: any) => {
