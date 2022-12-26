@@ -15,6 +15,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
+/** product 정보를 가지고오는 API 호출 */
 export async function getProduct() {
     const ref = collection(db, 'product');
     const snapshot = await getDocs(ref);
