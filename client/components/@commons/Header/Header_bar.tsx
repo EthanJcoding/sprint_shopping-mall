@@ -1,6 +1,6 @@
 function Header() {
     return (
-      <div className="bg-white shadow rounded flex justify-content: space-around">
+      <div className="bg-white shadow rounded flex justify-space-around">
         <h1>
           ABOUT
         </h1>
