@@ -53,11 +53,11 @@ const Main = () => {
           </div>
           <div className="xl:w-1/4 md:w-1/2 p-4">
             <div className="bg-gray-100 p-6 rounded-lg">
-              <img
+              {/* <img
                 className="h-full rounded w-full object-cover object-center mb-6"
                 src={products[0]?.img}
                 alt="content"
-              />
+              /> */}
               <h3 className="tracking-widest text-green-500 text-xs font-medium title-font">
                 {products[0]?.price}
               </h3>
