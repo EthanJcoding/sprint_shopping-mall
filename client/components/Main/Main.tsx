@@ -1,6 +1,5 @@
 import { getProduct } from "../../firebase";
 import { useState, useEffect } from "react";
-
 interface Product {
   price: number;
   productName: string;
