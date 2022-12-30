@@ -5,15 +5,11 @@ import Order_detail from "./Order_detail";
 
 const Order = () => {
     return (
-        <div className="flex">
+        <div className="flex w-full">
             {/* <Header /> */}
             <Sidebar />
-            <div>
-                <Order_img />
-            </div>
-            <div>
-                <Order_detail />
-            </div>
+            <Order_img />
+            <Order_detail />
         </div>
     )
 }
