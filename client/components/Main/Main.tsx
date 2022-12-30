@@ -1,7 +1,6 @@
 import { getProduct } from "../../firebase";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import Sidebar from "../@commons/aside/Sidebar";
-
 interface Product {
   price: number;
   productName: string;
@@ -24,7 +23,7 @@ const Main = () => {
     return (
       <div className="w-1/3">
         <div className="flex-col">
-          <img className="" src={arr.img} />
+          {/* <img className="" src={arr.img} /> */}
           <div className="flex-col text-center text-green-700">
             <div className="py-2">{MoneyConvert(arr.price)}</div>
             <div className="py-2">{arr.productName}</div>

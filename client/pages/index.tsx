@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/Layout/Layout";
 import Main from "../components/Main/Main";
+import Order from "../components/Order/Order";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
 
       <Layout>
         <Main />
+        {/* <Order /> */}
       </Layout>
     </>
   );
