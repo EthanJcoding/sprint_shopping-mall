@@ -1,3 +1,5 @@
+//후에 버튼으로 리펙토링해야함
+
 function Sidebar() {
   return (
     <div className="h-screen w-1/6 border-r border-slate-300">
