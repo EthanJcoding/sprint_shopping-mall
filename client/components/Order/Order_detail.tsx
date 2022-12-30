@@ -1,6 +1,6 @@
 const Order_detail = () => {
     return (
-        <div className="bg-green-200 h-screen">
+        <div className="bg-green-200 h-screen w-1/2">
             <div className="py-12 mx-20 text-2xl">
                 <div className="mb-3 text-3xl font-bold">{/*제목 받아오기 */}산뜻한 그린리프 케이스</div>
                 <div className="mb-3">{/*가격 받아오기 */}KRW 14,000<br /></div>
