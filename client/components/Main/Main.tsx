@@ -1,116 +1,49 @@
 import { getProduct } from "../../firebase";
 import { useState, useEffect } from "react";
+import Sidebar from "../@commons/aside/Sidebar";
 interface Product {
   price: number;
   productName: string;
+  img: string;
 }
-
+9;
 const Main = () => {
   const [products, setProducts] = useState<any>([]);
   useEffect(() => {
     getProduct().then(data => setProducts(data));
   }, []);
 
-  console.log(products);
+  const MoneyConvert = (price: number) => {
+    const num = price.toString();
+    // 1,000,000 원 물품 판매시 slice 메서드에 3대신 변수를 넣어서 리펙토링
+    return "₩ " + num.replace(num.slice(-3), "," + num.slice(-3));
+  };
 
-  return (
-    <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap w-full mb-20">
-          <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
-              Pitchfork Kickstarter Taxidermy
-            </h1>
-            <div className="h-1 w-20 bg-green-500 rounded"></div>
-          </div>
-          <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
-            Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-            gentrify, subway tile poke farm-to-table. Franzen you probably
-            haven't heard of them man bun deep jianbing selfies heirloom prism
-            food truck ugh squid celiac humblebrag.
-          </p>
-        </div>
-        <div className="flex flex-wrap -m-4">
-          <div className="xl:w-1/4 md:w-1/2 p-4">
-            <div className="bg-gray-100 p-6 rounded-lg">
-              <img
-                className="h-40 rounded w-full object-cover object-center mb-6"
-                src="https://dummyimage.com/720x400"
-                alt="content"
-              />
-              <h3 className="tracking-widest text-green-500 text-xs font-medium title-font">
-                SUBTITLE
-              </h3>
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                Chichen Itza
-              </h2>
-              <p className="leading-relaxed text-base">
-                Fingerstache flexitarian street art 8-bit waistcoat. Distillery
-                hexagon disrupt edison bulbche.
-              </p>
-            </div>
-          </div>
-          <div className="xl:w-1/4 md:w-1/2 p-4">
-            <div className="bg-gray-100 p-6 rounded-lg">
-              {/* <img
-                className="h-full rounded w-full object-cover object-center mb-6"
-                src={products[0]?.img}
-                alt="content"
-              /> */}
-              <h3 className="tracking-widest text-green-500 text-xs font-medium title-font">
-                {products[0]?.price}
-              </h3>
-
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                {products[0]?.productName}
-              </h2>
-              <p className="leading-relaxed text-base">
-                Fingerstache flexitarian street art 8-bit waistcoat. Distillery
-                hexagon disrupt edison bulbche.
-              </p>
-            </div>
-          </div>
-          <div className="xl:w-1/4 md:w-1/2 p-4">
-            <div className="bg-gray-100 p-6 rounded-lg">
-              <img
-                className="h-40 rounded w-full object-cover object-center mb-6"
-                src="https://dummyimage.com/722x402"
-                alt="content"
-              />
-              <h3 className="tracking-widest text-green-500 text-xs font-medium title-font">
-                SUBTITLE
-              </h3>
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                Great Pyramid of Giza
-              </h2>
-              <p className="leading-relaxed text-base">
-                Fingerstache flexitarian street art 8-bit waistcoat. Distillery
-                hexagon disrupt edison bulbche.
-              </p>
-            </div>
-          </div>
-          <div className="xl:w-1/4 md:w-1/2 p-4">
-            <div className="bg-gray-100 p-6 rounded-lg">
-              <img
-                className="h-40 rounded w-full object-cover object-center mb-6"
-                src="https://dummyimage.com/723x403"
-                alt="content"
-              />
-              <h3 className="tracking-widest text-green-500 text-xs font-medium title-font">
-                SUBTITLE
-              </h3>
-              <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                San Francisco
-              </h2>
-              <p className="leading-relaxed text-base">
-                Fingerstache flexitarian street art 8-bit waistcoat. Distillery
-                hexagon disrupt edison bulbche.
-              </p>
-            </div>
+  const Detail = ({ arr }: { arr: Product }) => {
+    return (
+      <div className="w-1/3">
+        <div className="flex-col">
+          {/* <img className="" src={arr.img} /> */}
+          <div className="flex-col text-center text-green-700">
+            <div className="py-2">{MoneyConvert(arr.price)}</div>
+            <div className="py-2">{arr.productName}</div>
           </div>
         </div>
       </div>
-    </section>
+    );
+  };
+
+  // component 에 하나의 배열을 넣게 해서 만들기 ?
+
+  return (
+    <div className="flex">
+      <Sidebar />
+      <section className="flex w-5/6">
+        {products.map((el: Product) => {
+          return <Detail arr={el}></Detail>;
+        })}
+      </section>
+    </div>
   );
 };
 

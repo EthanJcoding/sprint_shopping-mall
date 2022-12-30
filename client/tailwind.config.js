@@ -8,14 +8,11 @@ module.exports = {
   ],
   theme: {
     // 아래 링크에 대한 설명에 따라서, 미디어쿼리 규칙을 여기에도 설정합니다.
-    screens: {
-      mob: "375px",
-      tablet: "768px",
-      laptop: "1024px",
-      laptopl: "1440px",
-      desktop: "1280px",
+    extend: {
+      margin: {
+        '100px': '100px'
+      }
     },
-    extend: {},
   },
   plugins: [],
 }
