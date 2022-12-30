@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Layout from "../components/Layout/Layout";
-import Main from "../components/Main/Main";
+import Order from "../components/Order/Order";
 
-export default function Home() {
+export default function order_page() {
   return (
     <>
       <Head>
@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
       <Layout>
-        <Main />
+        <Order />
       </Layout>
     </>
   );
