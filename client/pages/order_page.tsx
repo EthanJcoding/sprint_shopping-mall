@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../components/Layout/Layout";
 import Order from "../components/Order/Order";
 
-export default function item_page() {
+export default function order_page() {
   return (
     <>
       <Head>
