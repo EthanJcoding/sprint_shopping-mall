@@ -1,13 +1,17 @@
+import Image from "next/image";
 import { getProduct } from "../../firebase";
-import { useState, useEffect, useMemo, useCallback } from "react";
-import Sidebar from "../@commons/aside/Sidebar";
+import { useState, useEffect, useCallback } from "react";
+import Sidebar from "../@commons/Sidebar/Sidebar";
+import { useRouter } from "next/router";
+
 interface Product {
   price: number;
   productName: string;
   img: string;
 }
-9;
+
 const Main = () => {
+  const router = useRouter();
   const [products, setProducts] = useState<any>([]);
   useEffect(() => {
     getProduct().then(data => setProducts(data));
@@ -23,7 +27,19 @@ const Main = () => {
     return (
       <div className="w-1/3">
         <div className="flex-col">
-          {/* <img className="" src={arr.img} /> */}
+          <button
+            type="button"
+            onClick={() => {
+              router.push({ pathname: "/order" });
+            }}
+          >
+            <Image
+              alt="product"
+              width={550}
+              height={500}
+              src={require("../../Images/case.png")}
+            />
+          </button>
           <div className="flex-col text-center text-green-700">
             <div className="py-2">{MoneyConvert(arr.price)}</div>
             <div className="py-2">{arr.productName}</div>
@@ -35,11 +51,11 @@ const Main = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <section className="flex w-5/6">
+      <div className="flex flex-wrap w-full">
         {products.map((el: Product, idx: number) => {
           return <Detail key={idx} arr={el}></Detail>;
         })}
-      </section>
+      </div>
     </div>
   );
 };

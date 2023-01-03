@@ -1,56 +1,84 @@
-const Footer = () => {
+import Image from "next/image";
+interface propTeam {
+  memberInfo: team;
+}
+interface team {
+  devRole: string;
+  name: string;
+  github: string;
+}
+
+function Banner() {
   return (
-    <footer className="text-gray-600 body-font">
-      <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            className="w-10 h-10 text-white p-2 bg-green-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span className="ml-3 text-xl">Tailblocks</span>
-        </a>
-        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2020 Tailblocks —
-          <a
-            href="https://twitter.com/knyttneve"
-            className="text-gray-600 ml-1"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            @knyttneve
-          </a>
-        </p>
-        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <a className="text-gray-500">
-            <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-            </svg>
-          </a>
-          <a className="ml-3 text-gray-500">
-            <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-            </svg>
-          </a>
-          <a className="ml-3 text-gray-500">
-            <svg fill="none" className="w-5 h-5" viewBox="0 0 24 24">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-            </svg>
-          </a>
-          <a className="ml-3 text-gray-500">
-            <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-              <circle cx="4" cy="4" r="2" stroke="none"></circle>
-            </svg>
-          </a>
+    <a
+      className="flex flex-col mx-auto my-8 w-fit "
+      href="https://github.com/EthanJcoding/sprint_shopping-mall"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <span className="text-center text-white">Team GitHub</span>
+      <div className="flex flex-col mt-2 text-center md:flex-row">
+        <span className="text-2xl leading-8 text-center text-white">
+          Sprint-Project
+        </span>
+        <span className="mx-4 text-xs border-l border-solid border-l-white"></span>
+        <span className="text-2xl leading-8 text-center text-white">
+          올취생 스터디
         </span>
       </div>
-    </footer>
+    </a>
   );
-};
+}
 
-export default Footer;
+function Member({ memberInfo }: propTeam) {
+  const { devRole, name, github } = memberInfo;
+  return (
+    <div className="inline-block w-20 mx-3 text-center py-3">
+      <Image
+        src={require("../../images/GitHub-Mark-Light-120px-plus.png")}
+        alt=""
+        className="mx-auto mb-1 w-9"
+      />
+      <div className="flex flex-col items-center">
+        <a
+          className="my-1 text-white hover:text-emerald-400"
+          href={github}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {name}
+        </a>
+        <div className="text-white text-xs border-solid border-2 border-white px-2 rounded-full pb-0.5 mt-1 w-fit">
+          {devRole}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Footer() {
+  const teamMember: team[] = [
+    {
+      devRole: "Front-End",
+      name: "정준일",
+      github: "https://github.com/EthanJcoding",
+    },
+    {
+      devRole: "Front-End",
+      name: "김명환",
+      github: "https://github.com/kongchip",
+    },
+  ];
+  return (
+    <div className="px-6 pt-4 bg-green-700 border-t">
+      <Banner />
+      <div className="flex justify-center items-center">
+        {teamMember.map((member, index) => {
+          return <Member key={index} memberInfo={member} />;
+        })}
+      </div>
+
+      <div className="py-8 text-center text-white/50">프로젝트 후기</div>
+    </div>
+  );
+}
