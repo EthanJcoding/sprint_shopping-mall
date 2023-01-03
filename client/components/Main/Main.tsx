@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getProduct } from "../../firebase";
 import { useState, useEffect, useCallback } from "react";
 import Sidebar from "../@commons/Sidebar/Sidebar";
-import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { selctedPrice } from "../../redux/Slice/CartSlice";
