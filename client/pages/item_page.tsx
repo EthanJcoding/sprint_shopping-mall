@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout/Layout";
-import Order from "../components/Order/Order";
+import Item from "../components/Item/Item";
 
 export default function item_page() {
   return (
@@ -13,7 +13,7 @@ export default function item_page() {
       </Head>
 
       <Layout>
-        <Order />
+        <Item />
       </Layout>
     </>
   );

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const Order_img = () => {
+const Item_img = () => {
     return (
         <div className="h-screen w-1/2">
             <div>
@@ -14,4 +14,4 @@ const Order_img = () => {
     )
 }
 
-export default Order_img
+export default Item_img
