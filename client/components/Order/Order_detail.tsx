@@ -4,6 +4,7 @@ import { useCallback, useState, useEffect } from "react";
 
 const Order_detail = () => {
   const [mounted, setMounted] = useState<boolean>(false);
+
   // HTML 매칭 문제 해결
   useEffect(() => {
     setMounted(true);
@@ -20,22 +21,33 @@ const Order_detail = () => {
     return "₩ " + num.replace(num.slice(-3), "," + num.slice(-3));
   }, []);
 
+  const handleDelete = (idx: number) => {
+    setDummy(prevDummy => {
+      const newDummy = [...prevDummy];
+      newDummy.splice(idx, 1);
+      return newDummy;
+    });
+  };
+
   const HandleQuantity = ({ idx }: { idx: number }) => {
     const [quantity, setQuantity] = useState(1);
 
-    if (quantity < 1) {
-      setDummy(dummy.splice(idx, 1));
-    }
-
     return (
-      <td className="flex">
-        <button onClick={() => setQuantity(quantity - 1)}>
-          <FaMinus></FaMinus>
-        </button>
-        <div className="mx-2 font-bold text-2xl">{quantity}</div>
-        <button onClick={() => setQuantity(quantity + 1)}>
-          <FaPlus></FaPlus>
-        </button>
+      <td className="flex flex-col justify-center items-between">
+        <div className="flex p-2">
+          <button
+            onClick={() => (quantity === 1 ? null : setQuantity(quantity - 1))}
+          >
+            <FaMinus></FaMinus>
+          </button>
+          <div className="mx-2 font-bold text-2xl">{quantity}</div>
+          <button onClick={() => setQuantity(quantity + 1)}>
+            <FaPlus></FaPlus>
+          </button>
+        </div>
+        <div className="mt-2 p-2 text-2xl text-gray-400 border text-center">
+          <button onClick={() => handleDelete(idx)}>X</button>
+        </div>
       </td>
     );
   };
@@ -46,7 +58,7 @@ const Order_detail = () => {
       <table className="flex flex-col w-full border rounded-sm">
         <thead className="flex items-center justify-between border-b font-bold p-4">
           <tr className="flex justify-between w-16 ml-8">
-            <td>
+            <td className="flex w-full justify-between">
               <input type="checkbox" />
               <span>선택</span>
             </td>
