@@ -4,7 +4,7 @@ import Item_detail from "./Item_detail";
 
 const Item = () => {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full h-screen">
       <Sidebar />
       <Item_img />
       <Item_detail />
