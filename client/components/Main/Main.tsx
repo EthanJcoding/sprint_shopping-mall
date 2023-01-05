@@ -65,9 +65,9 @@ const Main = () => {
     );
   };
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <Sidebar />
-      <div className="flex flex-wrap w-full">
+      <div className="flex flex-wrap w-full ">
         {products.map((el: Product, idx: number) => {
           return <Detail key={idx} arr={el}></Detail>;
         })}
