@@ -70,7 +70,7 @@ export default function Footer() {
     },
   ];
   return (
-    <div className="px-6 pt-4 bg-green-700 border-t">
+    <div className="flex flex-col px-6 pt-4 bg-green-700 border-t h-full">
       <Banner />
       <div className="flex justify-center items-center">
         {teamMember.map((member, index) => {

@@ -11,7 +11,7 @@ const initialState: StateType[] = [{ price: 0, productName: "" }];
 
 // 슬라이스생성
 export const productInfoSlice = createSlice({
-  name: "cart",
+  name: "productInfo",
   initialState,
   reducers: {
     selctedProduct: (
