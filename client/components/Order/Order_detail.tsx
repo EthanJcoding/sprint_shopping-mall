@@ -52,6 +52,8 @@ const Order_detail = () => {
     );
   };
 
+  console.log("hi");
+
   const CartList = () => {
     //tbody에 map 걸고 진행해야함
     return (
