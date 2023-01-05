@@ -14,9 +14,9 @@ const Order_detail = () => {
     { price: 16000, productName: "퍼플 리프 케이스" },
   ]);
 
+  // 2개 컴포넌트에서 사용중, 유틸로 뽑아도 될 듯
   const MoneyConvert = useCallback((price: number) => {
     const num = price.toString();
-    // 1,000,000 원 물품 판매시 slice 메서드에 3대신 변수를 넣어서 리펙토링
     return "₩ " + num.replace(num.slice(-3), "," + num.slice(-3));
   }, []);
 
@@ -28,14 +28,14 @@ const Order_detail = () => {
     }
 
     return (
-      <td>
-        <div role="button" onClick={() => setQuantity(quantity - 1)}>
+      <td className="flex">
+        <button onClick={() => setQuantity(quantity - 1)}>
           <FaMinus></FaMinus>
-        </div>
+        </button>
         <div className="mx-2 font-bold text-2xl">{quantity}</div>
-        <div role="button" onClick={() => setQuantity(quantity + 1)}>
+        <button onClick={() => setQuantity(quantity + 1)}>
           <FaPlus></FaPlus>
-        </div>
+        </button>
       </td>
     );
   };
