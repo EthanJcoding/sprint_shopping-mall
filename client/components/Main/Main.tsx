@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import Sidebar from "../@commons/Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { selctedPrice } from "../../redux/Slice/CartSlice";
+import { selctedProduct } from "../../redux/Slice/ProductInfoSlice";
 
 interface Product {
   price: number;
@@ -14,10 +14,10 @@ interface Product {
 }
 
 const Main = () => {
-  const data = useSelector((state: RootState) => state.cartInput.price);
+  const data = useSelector((state: RootState) => state.productInfo);
   const dispatch = useDispatch();
   const newData = (arr: any) => {
-    dispatch(selctedPrice(arr)); // onClick value ?
+    dispatch(selctedProduct(arr)); // onClick value ?
   };
 
   const [products, setProducts] = useState<any>([]);

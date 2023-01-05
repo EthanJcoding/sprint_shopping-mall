@@ -2,7 +2,7 @@
 // 슬라이스들을 통합한 store를 만들고, RootState를 정의해준다.
 
 import { configureStore, Action, getDefaultMiddleware } from "@reduxjs/toolkit";
-import cartSlice from "./Slice/CartSlice";
+import cartSlice from "./Slice/ProductInfoSlice";
 
 // import logger from "redux-logger";
 
@@ -17,7 +17,7 @@ const makeStore = () => {
   // 슬라이스 통합 store 생성
   const store = configureStore({
     reducer: {
-      cartInput: cartSlice.reducer,
+      productInfo: cartSlice.reducer,
       // [counterSlice.name]: counterSlice.reducer, // 위와 동일한 코드다.
       // [numberSlice.name]: numberSlice.reducer
     },

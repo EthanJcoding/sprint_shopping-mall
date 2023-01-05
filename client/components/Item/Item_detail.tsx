@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 const Item_detail = (): any => {
-  const priceData = useSelector((state: RootState) => state.cartInput.price);
+  const priceData = useSelector((state: RootState) => state.productInfo);
   console.log(priceData);
   //기종
   const [index, setIndex] = useState("0");
