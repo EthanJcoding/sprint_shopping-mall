@@ -8,7 +8,7 @@ import { RootState } from "../../redux/store";
 
 const Item_detail = (): any => {
   const priceData = useSelector((state: RootState) => state.productInfo);
-  console.log(priceData);
+  // console.log('priceData',priceData);
   //기종
   const [brand, setBrand] = useState("0");
   //기기
@@ -39,10 +39,10 @@ const Item_detail = (): any => {
     <div className="bg-green-200 h-screen w-1/2">
       <div className="py-12 mx-20 text-2xl">
         <div className="mb-3 text-3xl font-bold">
-          {/* {priceData.productName} */}
+          {priceData.productName}
         </div>
         <div className="mb-3">
-          {/* KRW {priceData.price} */}
+          KRW {priceData.price}
           <br />
         </div>
         <div className="text-xl">
