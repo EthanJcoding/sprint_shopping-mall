@@ -20,7 +20,14 @@ function Header() {
           />
         </button>
 
-        <button>장바구니</button>
+        <button
+          type="button"
+          onClick={() => {
+            router.push({ pathname: "/order_page" });
+          }}
+        >
+          장바구니
+        </button>
       </div>
     </div>
   );
