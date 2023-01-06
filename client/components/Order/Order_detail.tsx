@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { useCallback, useState, useEffect } from "react";
-
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 const Order_detail = () => {
+  const data = useSelector((state: RootState) => state.orderInfo);
+  console.log(data);
   const [mounted, setMounted] = useState<boolean>(false);
 
   // HTML 매칭 문제 해결

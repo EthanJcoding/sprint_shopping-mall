@@ -1,18 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { useRouter } from 'next/router';
-import Link from "next/link"
-import { Index } from "firebase/firestore";
-import { useRouter  } from "next/router";
-import { useSelector } from "react-redux";
+import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { selectOrder } from "../../redux/Slice/OrderCartSlice";
 
-const Item_detail = (): any => {
+const Item_detail = () => {
   const priceData = useSelector((state: RootState) => state.productInfo);
-  console.log(priceData);
-  //기종
+
+  const productName: string = priceData.productName;
+  const price: number = priceData.price;
   const [brand, setBrand] = useState("0");
-  //기기
   const [model, setModel] = useState("0");
+
+  const [order, setOrder] = useState(priceData);
+  // setBrand, setModel, productName, price 묶어야함
+  // setOrder ...ordr + 필요한 데이터
+
+  const dispatch = useDispatch();
+  const newData: any = (arr: any) => {
+    console.log(arr);
+    dispatch(selectOrder(arr));
+  };
+
+  useEffect(() => {
+    let a = { ...order, brand, model };
+    console.log(a);
+    setOrder(a);
+  }, [model, brand]);
 
   const onSelect = (event: any) => {
     setBrand(event.target.value);
@@ -21,28 +36,13 @@ const Item_detail = (): any => {
   const onChoice = (event: any) => {
     setModel(event.target.value);
   };
-  
-  const router = useRouter();
-  const consoleAA = (index: any) => {
-    console.log(`전달해줄 index = ${brand}`);
-    console.log(`전달해줄 model = ${model}`);
-    // console.log(`브랜드는 ${index}이고, 모델은 ${model}이다`)
-    // router.push({
-    //   pathname: '/order_page',
-    //   query: {
-    //     brand: index,
-    //     model: model,
-    //   },
-    // });
-  };
+
   return (
     <div className="bg-green-200 h-screen w-1/2">
       <div className="py-12 mx-20 text-2xl">
-        <div className="mb-3 text-3xl font-bold">
-          {/* {priceData.productName} */}
-        </div>
+        <div className="mb-3 text-3xl font-bold">{productName}</div>
         <div className="mb-3">
-          {/* KRW {priceData.price} */}
+          KRW {price}
           <br />
         </div>
         <div className="text-xl">
@@ -133,12 +133,18 @@ const Item_detail = (): any => {
               </select>
             ) : null}
           </div>
-          <Link as="/order_page" 
-          href={{
-            pathname:"/order_page",
-            
-            }}>
-            <button className="my-7 mx-20 ml-[100px] py-5 px-14 bg-green-300 items-center" onClick={consoleAA}>
+          <Link
+            as="/order_page"
+            href={{
+              pathname: "/order_page",
+            }}
+          >
+            <button
+              className="my-7 mx-20 ml-[100px] py-5 px-14 bg-green-300 items-center"
+              onClick={() => {
+                newData(order);
+              }}
+            >
               주문하기
             </button>
           </Link>
