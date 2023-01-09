@@ -1,12 +1,18 @@
 import Image from "next/image";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+
+import ModalBtn from '../Modal/ModalBtn'
+
 const Order_detail = () => {
   const data = useSelector((state: RootState) => state.orderInfo);
   console.log(data);
   const [mounted, setMounted] = useState<boolean>(false);
+
+  // 모달창
+  const [showModal, setShowModal] = useState(false)
 
   // HTML 매칭 문제 해결
   useEffect(() => {
@@ -111,10 +117,14 @@ const Order_detail = () => {
   };
 
   const Purchase = () => {
+
     return (
-      <button className="border rounded-lg px-8 py-4 bg-green-700 text-white font-medium hover:bg-green-600 ">
-        결제하기
-      </button>
+      <>
+        <button className="border rounded-lg px-8 py-4 bg-green-700 text-white font-medium hover:bg-green-600" onClick={() => setShowModal(true)}>
+          주문하기
+        </button>
+        <ModalBtn isvisible={showModal} onClose={() => setShowModal(false)}/>
+      </>
     );
   };
 

@@ -24,9 +24,8 @@ const Item_detail = () => {
   };
 
   useEffect(() => {
-    let a = { ...order, brand, model };
-    console.log(a);
-    setOrder(a);
+    let order_cart = { ...order, brand, model };
+    setOrder(order_cart);
   }, [model, brand]);
 
   const onSelect = (event: any) => {
@@ -145,7 +144,7 @@ const Item_detail = () => {
                 newData(order);
               }}
             >
-              주문하기
+              담기
             </button>
           </Link>
         </div>
