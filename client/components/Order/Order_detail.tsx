@@ -4,24 +4,22 @@ import { useCallback, useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
-import ModalBtn from '../Modal/ModalBtn'
+import ModalBtn from "../Modal/ModalBtn";
 
 const Order_detail = () => {
-  const data = useSelector((state: RootState) => state.orderInfo);
   const [mounted, setMounted] = useState<boolean>(false);
 
   // 모달창
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   // HTML 매칭 문제 해결
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const [dummy, setDummy] = useState([
-    { price: 14000, productName: "그린 리프 케이스" },
-    { price: 16000, productName: "퍼플 리프 케이스" },
-  ]);
+  const sliceData = useSelector((state: RootState) => state.orderInfo);
+  const [data, setData] = useState([sliceData]);
+  console.log(data);
 
   // 2개 컴포넌트에서 사용중, 유틸로 뽑아도 될 듯
   const MoneyConvert = useCallback((price: number) => {
@@ -30,10 +28,10 @@ const Order_detail = () => {
   }, []);
 
   const handleDelete = (idx: number) => {
-    setDummy(prevDummy => {
-      const newDummy = [...prevDummy];
-      newDummy.splice(idx, 1);
-      return newDummy;
+    setData(prevData => {
+      const newData = [...prevData];
+      newData.splice(idx, 1);
+      return newData;
     });
   };
 
@@ -81,7 +79,7 @@ const Order_detail = () => {
             <td>수량</td>
           </tr>
         </thead>
-        {dummy.map((el, idx) => {
+        {data.map((el, idx) => {
           return (
             <tbody
               className="flex items-center p-4 justify-between border-b"
@@ -100,7 +98,10 @@ const Order_detail = () => {
                     src={require("../../Images/case.png")}
                   />
                 </td>
-                <td>{el.productName}</td>
+                <td>
+                  <div className="font-bold">{el.productName}</div>
+                  <div className="text-sm text-gray-500">{el.model}</div>
+                </td>
               </tr>
               <tr className="mr-20">
                 <td>{MoneyConvert(el.price)}</td>
@@ -116,13 +117,15 @@ const Order_detail = () => {
   };
 
   const Purchase = () => {
-
     return (
       <>
-        <button className="border rounded-lg px-8 py-4 bg-green-700 text-white font-medium hover:bg-green-600" onClick={() => setShowModal(true)}>
+        <button
+          className="border rounded-lg px-8 py-4 bg-green-700 text-white font-medium hover:bg-green-600"
+          onClick={() => setShowModal(true)}
+        >
           주문하기
         </button>
-        <ModalBtn isvisible={showModal} onClose={() => setShowModal(false)}/>
+        <ModalBtn isvisible={showModal} onClose={() => setShowModal(false)} />
       </>
     );
   };
