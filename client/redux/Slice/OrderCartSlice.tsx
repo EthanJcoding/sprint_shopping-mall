@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
 
-// initalState 타입 정의
 type StateType = {
   img?: string;
   productName: string;
@@ -17,7 +16,6 @@ const initialState: StateType = {
   model: "",
 };
 
-// 슬라이스생성
 export const orderCartSlice = createSlice({
   name: "orderInfo",
   initialState,
