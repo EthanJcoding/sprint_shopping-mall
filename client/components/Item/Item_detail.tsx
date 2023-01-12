@@ -6,19 +6,21 @@ import { RootState } from "../../redux/store";
 import { selectOrder } from "../../redux/Slice/OrderCartSlice";
 
 interface Product {
-  value?: string
+  value?: string;
 }
 
-const Item_detail = ({value}: Product) => {
+const Item_detail = ({ value }: Product) => {
   const priceData = useSelector((state: RootState) => state.productInfo);
 
   const productName: string = priceData.productName;
-  const price: string = priceData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  
+  const price: string = priceData.price
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   const [brand, setBrand] = useState(value);
   const [model, setModel] = useState(value);
   const [order, setOrder] = useState(priceData);
-  
+
   const dispatch = useDispatch();
   const newData = (arr: any) => {
     dispatch(selectOrder(arr));
@@ -28,11 +30,11 @@ const Item_detail = ({value}: Product) => {
     let order_cart = { ...order, brand, model };
     setOrder(order_cart);
   }, [model, brand]);
-  
+
   const onSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setBrand(event.target.value);
-  }; 
-  
+  };
+
   const onChoice = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setModel(event.target.value);
   };
