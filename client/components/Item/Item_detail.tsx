@@ -1,25 +1,26 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 // import { useRouter } from 'next/router';
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { selectOrder } from "../../redux/Slice/OrderCartSlice";
 
-const Item_detail = () => {
+interface Product {
+  value?: string
+}
+
+const Item_detail = ({value}: Product) => {
   const priceData = useSelector((state: RootState) => state.productInfo);
 
   const productName: string = priceData.productName;
-  const price: number = priceData.price;
-  const [brand, setBrand] = useState("0");
-  const [model, setModel] = useState("0");
-
+  const price: string = priceData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  
+  const [brand, setBrand] = useState(value);
+  const [model, setModel] = useState(value);
   const [order, setOrder] = useState(priceData);
-  // setBrand, setModel, productName, price 묶어야함
-  // setOrder ...ordr + 필요한 데이터
-
+  
   const dispatch = useDispatch();
-  const newData: any = (arr: any) => {
-    console.log(arr);
+  const newData = (arr: any) => {
     dispatch(selectOrder(arr));
   };
 
@@ -27,17 +28,17 @@ const Item_detail = () => {
     let order_cart = { ...order, brand, model };
     setOrder(order_cart);
   }, [model, brand]);
-
-  const onSelect = (event: any) => {
+  
+  const onSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setBrand(event.target.value);
-  };
-
-  const onChoice = (event: any) => {
+  }; 
+  
+  const onChoice = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setModel(event.target.value);
   };
 
   return (
-    <div className="bg-green-200 h-screen w-1/2">
+    <div className="bg-main_color2 h-screen w-1/2">
       <div className="py-12 mx-20 text-2xl">
         <div className="mb-3 text-3xl font-bold">{productName}</div>
         <div className="mb-3">
@@ -46,7 +47,6 @@ const Item_detail = () => {
         </div>
         <div className="text-xl">
           <div className="mb-7">
-            {/* 이쪽부분은 내가 어떻게 만들면 좋게 만들어질까? */}
             제품 유의 사항 : 모두가 사랑하는 케이스파이의 베스트 셀러 임팩트
             <br />
             케이스 - 혁신적인 EcoShock 기술로 한층 더 강력하게 업그레이드 된
@@ -60,16 +60,15 @@ const Item_detail = () => {
         </div>
       </div>
       <div className="px-12 mx-7">
-        <div className="text-lg">기기선택</div>
-        {/* <form action="order_page" method="post"> */}
+        <div className="text-lg py-2">기기선택</div>
         <div>
-          <div className="ml-10">
-            <select className="mx-3" value={brand} onChange={onSelect}>
+          <div className="">
+            <select className="mr-3 my-3" value={brand} onChange={onSelect}>
               <option value="0">기종 선택</option>
               <option value="Apple">Apple</option>
               <option value="Galaxy">Galaxy</option>
             </select>
-            {brand === "0" ? (
+            {brand === value ? (
               <select value={brand} onChange={onSelect}>
                 <option value="기종 선택">기기 선택</option>
               </select>
@@ -139,12 +138,12 @@ const Item_detail = () => {
             }}
           >
             <button
-              className="my-7 mx-20 ml-[100px] py-5 px-14 bg-green-300 items-center"
+              className="mt-5 py-5 bg-black w-52 text-white font-bold"
               onClick={() => {
                 newData(order);
               }}
             >
-              담기
+              장바구니 담기
             </button>
           </Link>
         </div>

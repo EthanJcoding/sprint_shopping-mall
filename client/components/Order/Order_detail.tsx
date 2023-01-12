@@ -8,7 +8,6 @@ import ModalBtn from '../Modal/ModalBtn'
 
 const Order_detail = () => {
   const data = useSelector((state: RootState) => state.orderInfo);
-  console.log(data);
   const [mounted, setMounted] = useState<boolean>(false);
 
   // 모달창

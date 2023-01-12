@@ -11,6 +11,11 @@ module.exports = {
     extend: {
       margin: {
         '100px': '100px'
+      },
+      colors: {
+        'main_color1': '#afbca1',
+        'main_color2': '#99a988',
+        'main_color3': '#93a481'
       }
     },
   },
