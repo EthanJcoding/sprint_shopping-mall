@@ -1,27 +1,41 @@
-import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, Reducer, current } from "@reduxjs/toolkit";
 
-type StateType = {
+type StateType = Array<{
   img?: string;
   productName: string;
   price: number;
   brand: string;
   model: string;
-};
+}>;
 
-const initialState: StateType = {
-  img: "",
-  productName: "",
-  price: 0,
-  brand: "",
-  model: "",
-};
+const initialState: StateType = [];
+
+let a: any = [];
 
 export const orderCartSlice = createSlice({
   name: "orderInfo",
   initialState,
   reducers: {
-    selectOrder: (state: StateType, action: PayloadAction<StateType>) => {
-      state = action.payload;
+    initOrder: (state: StateType) => {
+      state = [];
+    },
+    selectOrder: (
+      state: StateType,
+      action: PayloadAction<{
+        img?: string;
+        productName: string;
+        price: number;
+        brand: string;
+        model: string;
+      }>,
+    ) => {
+      a = [...a, action.payload];
+      state = a;
+      return state;
+    },
+    deleteOrder: (state: StateType, action) => {
+      state = [...a];
+      state.splice(action.payload, 1);
       return state;
     },
   },
@@ -29,7 +43,8 @@ export const orderCartSlice = createSlice({
 
 // 액션을 export 해준다.
 export const { selectOrder } = orderCartSlice.actions;
-
+export const { initOrder } = orderCartSlice.actions;
+export const { deleteOrder } = orderCartSlice.actions;
 // 슬라이스를 export 해준다.
 const orderReducer: Reducer<typeof initialState> = orderCartSlice.reducer;
 export default orderReducer;
