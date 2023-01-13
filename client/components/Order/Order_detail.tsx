@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { useCallback, useState, useEffect, Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 
 import ModalBtn from "../Modal/ModalBtn";
+import { deleteOrder } from "../../redux/Slice/OrderCartSlice";
 
 const Order_detail = () => {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -13,13 +14,13 @@ const Order_detail = () => {
   const [showModal, setShowModal] = useState(false);
 
   // HTML 매칭 문제 해결
+  const dispatch = useDispatch();
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const sliceData = useSelector((state: RootState) => state.orderInfo);
-  const [data, setData] = useState([sliceData]);
-  console.log(data);
+  const [data, setData] = useState(sliceData);
 
   // 2개 컴포넌트에서 사용중, 유틸로 뽑아도 될 듯
   const MoneyConvert = useCallback((price: number) => {
@@ -30,10 +31,16 @@ const Order_detail = () => {
   const handleDelete = (idx: number) => {
     setData(prevData => {
       const newData = [...prevData];
+      dispatch(deleteOrder(idx));
       newData.splice(idx, 1);
       return newData;
     });
   };
+
+  useEffect(() => {
+    console.log(data);
+    console.log(sliceData);
+  }, [data]);
 
   const HandleQuantity = ({ idx }: { idx: number }) => {
     const [quantity, setQuantity] = useState(1);

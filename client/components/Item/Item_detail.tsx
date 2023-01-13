@@ -22,6 +22,7 @@ const Item_detail = ({ value }: Product) => {
   const [order, setOrder] = useState(priceData);
 
   const dispatch = useDispatch();
+
   const newData = (arr: any) => {
     dispatch(selectOrder(arr));
   };
