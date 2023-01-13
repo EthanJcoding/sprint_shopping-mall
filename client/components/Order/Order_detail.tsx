@@ -111,7 +111,7 @@ const Order_detail = () => {
                 </td>
               </tr>
               <tr className="mr-20">
-                <td>{MoneyConvert(el.price)}</td>
+                {/* <td>{MoneyConvert(el.price)}</td> */}
               </tr>
               <tr className="mr-4">
                 <HandleQuantity idx={idx} />

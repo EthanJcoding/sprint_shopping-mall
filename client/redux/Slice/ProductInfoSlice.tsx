@@ -14,7 +14,7 @@ export const productInfoSlice = createSlice({
   name: "productInfo",
   initialState,
   reducers: {
-    selctedProduct: (state: StateType, action: PayloadAction<StateType>) => {
+    selectedProduct: (state: StateType, action: PayloadAction<StateType>) => {
       state = action.payload;
       return state;
     },
@@ -22,7 +22,7 @@ export const productInfoSlice = createSlice({
 });
 
 // 액션을 export 해준다.
-export const { selctedProduct } = productInfoSlice.actions;
+export const { selectedProduct } = productInfoSlice.actions;
 
 // 슬라이스를 export 해준다.
 const productReducer: Reducer<typeof initialState> = productInfoSlice.reducer;
