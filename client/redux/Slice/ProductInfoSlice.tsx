@@ -4,6 +4,7 @@ import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
 type StateType = {
   price: number;
   productName: string;
+  img?: string;
 };
 
 // initalState 생성
