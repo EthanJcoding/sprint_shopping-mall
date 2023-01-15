@@ -35,9 +35,9 @@ function Member({ memberInfo }: propTeam) {
   return (
     <div className="inline-block w-20 mx-3 text-center py-3">
       <Image
-        src={require("../../images/footer.png")}
-        alt=""
+        alt="footer"
         className="mx-auto mb-1 w-9"
+        src={require("../../images/footer.png")}
       />
       <div className="flex flex-col items-center">
         <a
