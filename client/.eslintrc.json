@@ -9,10 +9,10 @@
     "node": true
   },
   "extends": [
-    "@typescript-eslint/recommended",
+    "@typescript-eslint",
     "airbnb",
     "airbnb-typescript",
-    "prettier/recommended",
+    "prettier",
     "next/core-web-vitals"
   ],
   "rules": {
