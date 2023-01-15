@@ -19,6 +19,7 @@ const Item_detail = ({ value }: Product) => {
 
   const [brand, setBrand] = useState(value);
   const [model, setModel] = useState(value);
+  const [quantity] = useState(1);
   const [order, setOrder] = useState(priceData);
 
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Item_detail = ({ value }: Product) => {
   };
 
   useEffect(() => {
-    let order_cart = { ...order, brand, model };
+    let order_cart = { ...order, brand, model, quantity };
     setOrder(order_cart);
   }, [model, brand]);
 

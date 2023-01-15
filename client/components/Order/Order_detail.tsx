@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 
 import ModalBtn from "../Modal/ModalBtn";
-import { deleteOrder } from "../../redux/Slice/OrderCartSlice";
+import { deleteOrder, handleOrder } from "../../redux/Slice/OrderCartSlice";
 
 const Order_detail = () => {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -44,6 +44,7 @@ const Order_detail = () => {
 
   const HandleQuantity = ({ idx }: { idx: number }) => {
     const [quantity, setQuantity] = useState(1);
+    dispatch(handleOrder({ idx, quantity }));
 
     return (
       <td className="flex flex-col justify-center items-between">
