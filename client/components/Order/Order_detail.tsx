@@ -44,7 +44,9 @@ const Order_detail = () => {
 
   const HandleQuantity = ({ idx }: { idx: number }) => {
     const [quantity, setQuantity] = useState(1);
-    dispatch(handleOrder({ idx, quantity }));
+    // let newArr = data.slice();
+    // newArr[idx].quantity = quantity;
+    // dispatch(handleOrder({ idx, newArr }));
 
     return (
       <td className="flex flex-col justify-center items-between">
@@ -112,7 +114,7 @@ const Order_detail = () => {
                 </td>
               </tr>
               <tr className="mr-20">
-                <td>{MoneyConvert(el.price)}</td>
+                {/* <td>{MoneyConvert(el.price)}</td> */}
               </tr>
               <tr className="mr-4">
                 <HandleQuantity idx={idx} />

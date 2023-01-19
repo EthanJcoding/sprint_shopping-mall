@@ -34,11 +34,6 @@ function Member({ memberInfo }: propTeam) {
   const { devRole, name, github } = memberInfo;
   return (
     <div className="inline-block w-20 mx-3 text-center py-3">
-      <Image
-        alt="footer"
-        className="mx-auto mb-1 w-9"
-        src={require("../../images/footer.png")}
-      />
       <div className="flex flex-col items-center">
         <a
           className="my-1 text-white hover:text-emerald-400"
