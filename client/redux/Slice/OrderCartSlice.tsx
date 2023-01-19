@@ -18,10 +18,7 @@ export const orderCartSlice = createSlice({
   initialState,
   reducers: {
     handleOrder: (state: StateType, action) => {
-      const { idx, quantity } = action.payload;
-      a[idx].quantity = quantity;
-      state = a;
-      return state;
+      console.log(action.payload);
     },
     selectOrder: (
       state: StateType,
