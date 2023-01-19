@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "vercel-deploy": "next build && next export"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@next/font": "13.0.7",
