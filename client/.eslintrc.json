@@ -10,6 +10,7 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended" ,
     "airbnb",
     "airbnb-typescript",
     "plugin:prettier/recommended",
