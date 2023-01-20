@@ -65,7 +65,7 @@ export default function Footer() {
     },
   ];
   return (
-    <div className="flex flex-col px-6 pt-4 bg-green-700 border-t h-full">
+    <div className="flex flex-col px-6 pt-4 bg-green-700 border-t">
       <Banner />
       <div className="flex justify-center items-center">
         {teamMember.map((member, index) => {

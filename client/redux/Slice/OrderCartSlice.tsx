@@ -17,12 +17,6 @@ export const orderCartSlice = createSlice({
   name: "orderInfo",
   initialState,
   reducers: {
-    handleOrder: (state: StateType, action) => {
-      const { idx, quantity } = action.payload;
-      a[idx].quantity = quantity;
-      state = a;
-      return state;
-    },
     selectOrder: (
       state: StateType,
       action: PayloadAction<{
@@ -48,7 +42,6 @@ export const orderCartSlice = createSlice({
 // 액션을 export 해준다.
 export const { selectOrder } = orderCartSlice.actions;
 export const { deleteOrder } = orderCartSlice.actions;
-export const { handleOrder } = orderCartSlice.actions;
 // 슬라이스를 export 해준다.
 const orderReducer: Reducer<typeof initialState> = orderCartSlice.reducer;
 export default orderReducer;

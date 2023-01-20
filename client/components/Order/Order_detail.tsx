@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 
 import ModalBtn from "../Modal/ModalBtn";
-import { deleteOrder, handleOrder } from "../../redux/Slice/OrderCartSlice";
 
 const Order_detail = () => {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -31,7 +30,6 @@ const Order_detail = () => {
   const handleDelete = (idx: number) => {
     setData(prevData => {
       const newData = [...prevData];
-      dispatch(deleteOrder(idx));
       newData.splice(idx, 1);
       return newData;
     });
@@ -44,7 +42,6 @@ const Order_detail = () => {
 
   const HandleQuantity = ({ idx }: { idx: number }) => {
     const [quantity, setQuantity] = useState(1);
-    dispatch(handleOrder({ idx, quantity }));
 
     return (
       <td className="flex flex-col justify-center items-between">

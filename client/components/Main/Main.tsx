@@ -34,7 +34,7 @@ const Main = () => {
   const Detail = ({ arr }: { arr: Product }) => {
     return (
       <div className="w-1/3">
-        <div className="flex-col">
+        <div className="">
           <Link
             as="/item_page"
             href={{
@@ -56,7 +56,7 @@ const Main = () => {
               />
             </button>
           </Link>
-          <div className="flex-col text-center text-green-700">
+          <div className="text-center text-green-700">
             <div className="py-2">{MoneyConvert(arr.price)}</div>
             <div className="py-2">{arr.productName}</div>
           </div>
@@ -65,7 +65,7 @@ const Main = () => {
     );
   };
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <Sidebar />
       <div className="flex flex-wrap w-full ">
         {products.map((el: Product, idx: number) => {
