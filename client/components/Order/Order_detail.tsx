@@ -44,7 +44,7 @@ const Order_detail = () => {
     const [quantity, setQuantity] = useState(1);
 
     return (
-      <td className="flex flex-col justify-center items-between">
+      <td className="flex flex-col">
         <div className="flex p-2">
           <button
             onClick={() => (quantity === 1 ? null : setQuantity(quantity - 1))}
@@ -67,12 +67,8 @@ const Order_detail = () => {
     //tbody에 map 걸고 진행해야함
     return (
       <table className="flex flex-col w-full border rounded-sm">
-        <thead className="flex items-center justify-between border-b font-bold p-4">
-          <tr className="flex justify-between w-16 ml-8">
-            <td className="flex w-full justify-between">
-              <input type="checkbox" />
-              <span>선택</span>
-            </td>
+        <thead className="flex items-center p-4 justify-between border-b font-bold ">
+          <tr className="">
           </tr>
           <tr>
             <td>상품명</td>
@@ -87,18 +83,13 @@ const Order_detail = () => {
         {data.map((el, idx) => {
           return (
             <tbody
-              className="flex items-center p-4 justify-between border-b"
+              className="flex items-center p-4 justify-between border-b font-bold "
               key={idx}
             >
-              <tr className="ml-8">
-                <td>
-                  <input type="checkbox" />
-                </td>
-              </tr>
               <tr className="flex items-center">
                 <td>
                   <Image
-                    className="w-48"
+                    className="w-48 hidden sm:flex"
                     alt="product"
                     src={require("../../Images/case.png")}
                   />
@@ -108,8 +99,8 @@ const Order_detail = () => {
                   <div className="text-sm text-gray-500">{el.model}</div>
                 </td>
               </tr>
-              <tr className="mr-20">
-                {/* <td>{MoneyConvert(el.price)}</td> */}
+              <tr className="">
+                <td>{MoneyConvert(el.price)}</td>
               </tr>
               <tr className="mr-4">
                 <HandleQuantity idx={idx} />

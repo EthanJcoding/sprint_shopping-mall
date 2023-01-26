@@ -42,15 +42,15 @@ const Item_detail = ({ value }: Product) => {
   };
 
   return (
-    <div className="bg-main_color2 h-screen w-1/2">
-      <div className="py-12 mx-20 text-2xl">
-        <div className="mb-3 text-3xl font-bold">{productName}</div>
-        <div className="mb-3">
+    <div className="bg-main_color2 md:bg-main_color2">
+      <div className="text-sm md:text-2xl py-12 mx-20">
+        <div className="md:mb-3 font-bold ">{productName}</div>
+        <div className="md:mb-3">
           KRW {price}
           <br />
         </div>
-        <div className="text-xl">
-          <div className="mb-7">
+        <div className="md:text-xl">
+          <div className="md:mb-7">
             제품 유의 사항 : 모두가 사랑하는 케이스파이의 베스트 셀러 임팩트
             <br />
             케이스 - 혁신적인 EcoShock 기술로 한층 더 강력하게 업그레이드 된
@@ -63,17 +63,17 @@ const Item_detail = ({ value }: Product) => {
           </div>
         </div>
       </div>
-      <div className="px-12 mx-7">
-        <div className="text-lg py-2">기기선택</div>
-        <div>
-          <div className="">
+      <div className="place-content-center md:px-12 mx-7">
+        <div className="hidden md:flex">기기선택</div>
+        <div className="">
+          <div className="flex justify-center md:justify-start">
             <select className="mr-3 my-3" value={brand} onChange={onSelect}>
               <option value="0">기종 선택</option>
               <option value="Apple">Apple</option>
               <option value="Galaxy">Galaxy</option>
             </select>
             {brand === value ? (
-              <select value={brand} onChange={onSelect}>
+              <select className="mr-3 my-3" value={brand} onChange={onSelect}>
                 <option value="기종 선택">기기 선택</option>
               </select>
             ) : null}
@@ -141,14 +141,16 @@ const Item_detail = ({ value }: Product) => {
               pathname: "/order_page",
             }}
           >
-            <button
-              className="mt-5 py-5 bg-black w-52 text-white font-bold"
-              onClick={() => {
-                newData(order);
-              }}
-            >
-              장바구니 담기
-            </button>
+            <div className="flex justify-center md:justify-start">
+              <button
+                className="mt-5 py-5 bg-black w-52 text-white font-bold mb-5 "
+                onClick={() => {
+                  newData(order);
+                }}
+              >
+                장바구니 담기
+              </button>
+            </div>
           </Link>
         </div>
       </div>

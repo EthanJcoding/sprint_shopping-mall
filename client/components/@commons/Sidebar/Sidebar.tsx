@@ -1,11 +1,11 @@
-//후에 버튼으로 리펙토링해야함
-
 function Sidebar() {
   return (
-    <div className="h-full w-1/6 border-r border-slate-300 ">
-      <div className="text-green-700">
-        <div className="pl-9 py-8">green leaf</div>
-        <div className="pl-9 py-4">sweet home</div>
+    <div className="border-r border-slate-150 hidden md:flex">
+      <div className="h-full w-48">
+        <div className="text-green-700">
+          <div className="pl-9 py-8">green leaf</div>
+          <div className="pl-9 py-4">sweet home</div>
+        </div>
       </div>
     </div>
   );

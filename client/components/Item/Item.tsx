@@ -5,13 +5,10 @@ import Footer from "../Layout/Footer";
 
 const Item = () => {
   return (
-    <div>
-      <div className="flex w-full h-screen">
-        <Sidebar />
-        <Item_img />
-        <Item_detail />
-      </div>
-        <Footer />
+    <div className="md:flex">
+      <Sidebar />
+      <Item_img />
+      <Item_detail />
     </div>
   );
 };
