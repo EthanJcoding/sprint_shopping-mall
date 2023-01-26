@@ -48,12 +48,13 @@ const Main = () => {
                 newData(arr);
               }}
             >
-              <Image
+              {/* <Image
                 alt="product"
                 width={550}
                 height={500}
                 src={require("../../Images/case.png")}
-              />
+              /> */}
+              <img src={arr.img} />
             </button>
           </Link>
           <div className="text-center text-green-700">
