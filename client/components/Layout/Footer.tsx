@@ -73,7 +73,7 @@ export default function Footer() {
         })}
       </div>
 
-      <div className="py-8 text-center text-white/50">프로젝트 후기</div>
+      <div className="py-8 text-center text-white/50">logo & product design <a href="https://www.instagram.com/galmetbit/">heechan yang</a></div>
     </div>
   );
 }
