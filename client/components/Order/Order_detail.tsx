@@ -49,11 +49,11 @@ const Order_detail = () => {
           <button
             onClick={() => (quantity === 1 ? null : setQuantity(quantity - 1))}
           >
-            <FaMinus></FaMinus>
+            <FaMinus />
           </button>
           <div className="mx-2 font-bold text-2xl">{quantity}</div>
           <button onClick={() => setQuantity(quantity + 1)}>
-            <FaPlus></FaPlus>
+            <FaPlus />
           </button>
         </div>
         <div className="mt-2 p-2 text-2xl text-gray-400 border text-center">
@@ -65,6 +65,7 @@ const Order_detail = () => {
 
   const CartList = () => {
     //tbody에 map 걸고 진행해야함
+    console.log(data)
     return (
       <table className="flex flex-col w-full border rounded-sm">
         <thead className="flex items-center p-4 justify-between border-b font-bold ">
@@ -100,9 +101,9 @@ const Order_detail = () => {
                 </td>
               </tr>
               <tr className="">
-                <td>{MoneyConvert(el.price)}</td>
+                <td>{MoneyConvert(el.price)} </td>
               </tr>
-              <tr className="mr-4">
+              <tr className="">
                 <HandleQuantity idx={idx} />
               </tr>
             </tbody>

@@ -7,7 +7,7 @@ const Item_img = () => {
     return (
         <div className=" mt-14 md:h-screen mt-1">
             <div className="flex justify-center">
-                <img className="w-80 md:w-max" src={priceData.img}
+                <img className="" src={priceData.img}
                 alt="case_img"
                 width={1200}
                 />
