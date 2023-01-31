@@ -11,7 +11,7 @@ interface team {
 function Banner() {
   return (
     <a
-      className="flex flex-col mx-auto my-8 w-fit "
+      className="flex flex-col mx-auto my-1 w-fit "
       href="https://github.com/EthanJcoding/sprint_shopping-mall"
       target="_blank"
       rel="noreferrer"
@@ -19,11 +19,7 @@ function Banner() {
       <span className="text-center text-white">Team GitHub</span>
       <div className="flex flex-col mt-2 text-center md:flex-row">
         <span className="text-2xl leading-8 text-center text-white">
-          Sprint-Project
-        </span>
-        <span className="mx-4 text-xs border-l border-solid border-l-white"></span>
-        <span className="text-2xl leading-8 text-center text-white">
-          올취생 스터디
+          Sprint-Project  |  올취생 스터디
         </span>
       </div>
     </a>
@@ -65,7 +61,7 @@ export default function Footer() {
     },
   ];
   return (
-    <div className="flex flex-col px-6 pt-4 bg-green-700 border-t h-full">
+    <div className="flex flex-col px-6 bg-green-700 border-t">
       <Banner />
       <div className="flex justify-center items-center">
         {teamMember.map((member, index) => {
@@ -73,7 +69,7 @@ export default function Footer() {
         })}
       </div>
 
-      <div className="py-8 text-center text-white/50">프로젝트 후기</div>
+      <div className="py-2 text-center text-white/50">logo & product design <a href="https://www.instagram.com/galmetbit/">heechan yang</a></div>
     </div>
   );
 }

@@ -6,8 +6,8 @@ export default function item_page() {
   return (
     <>
       <Head>
-        <title>명환님 우리 취업 화이팅..!</title>
-        <meta name="description" content="Nextjs 뿌시기" />
+        <title>filll Shoping_mall</title>
+        <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

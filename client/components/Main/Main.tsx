@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getProduct } from "../../firebase";
 import { useState, useEffect, useCallback } from "react";
@@ -34,7 +33,7 @@ const Main = () => {
   const Detail = ({ arr }: { arr: Product }) => {
     return (
       <div className="w-1/3">
-        <div className="flex-col">
+        <div className="">
           <Link
             as="/item_page"
             href={{
@@ -48,15 +47,10 @@ const Main = () => {
                 newData(arr);
               }}
             >
-              <Image
-                alt="product"
-                width={550}
-                height={500}
-                src={require("../../Images/case.png")}
-              />
+              <img src={arr.img} />
             </button>
           </Link>
-          <div className="flex-col text-center text-green-700">
+          <div className="text-center text-green-700">
             <div className="py-2">{MoneyConvert(arr.price)}</div>
             <div className="py-2">{arr.productName}</div>
           </div>
@@ -65,7 +59,7 @@ const Main = () => {
     );
   };
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <Sidebar />
       <div className="flex flex-wrap w-full ">
         {products.map((el: Product, idx: number) => {

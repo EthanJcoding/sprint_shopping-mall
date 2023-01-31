@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 
 import ModalBtn from "../Modal/ModalBtn";
-import { deleteOrder, handleOrder } from "../../redux/Slice/OrderCartSlice";
 
 const Order_detail = () => {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -31,7 +30,6 @@ const Order_detail = () => {
   const handleDelete = (idx: number) => {
     setData(prevData => {
       const newData = [...prevData];
-      dispatch(deleteOrder(idx));
       newData.splice(idx, 1);
       return newData;
     });
@@ -44,21 +42,18 @@ const Order_detail = () => {
 
   const HandleQuantity = ({ idx }: { idx: number }) => {
     const [quantity, setQuantity] = useState(1);
-    // let newArr = data.slice();
-    // newArr[idx].quantity = quantity;
-    // dispatch(handleOrder({ idx, newArr }));
 
     return (
-      <td className="flex flex-col justify-center items-between">
+      <td className="flex flex-col">
         <div className="flex p-2">
           <button
             onClick={() => (quantity === 1 ? null : setQuantity(quantity - 1))}
           >
-            <FaMinus></FaMinus>
+            <FaMinus />
           </button>
           <div className="mx-2 font-bold text-2xl">{quantity}</div>
           <button onClick={() => setQuantity(quantity + 1)}>
-            <FaPlus></FaPlus>
+            <FaPlus />
           </button>
         </div>
         <div className="mt-2 p-2 text-2xl text-gray-400 border text-center">
@@ -70,14 +65,11 @@ const Order_detail = () => {
 
   const CartList = () => {
     //tbody에 map 걸고 진행해야함
+    console.log(data)
     return (
       <table className="flex flex-col w-full border rounded-sm">
-        <thead className="flex items-center justify-between border-b font-bold p-4">
-          <tr className="flex justify-between w-16 ml-8">
-            <td className="flex w-full justify-between">
-              <input type="checkbox" />
-              <span>선택</span>
-            </td>
+        <thead className="flex items-center p-4 justify-between border-b font-bold ">
+          <tr className="">
           </tr>
           <tr>
             <td>상품명</td>
@@ -92,18 +84,13 @@ const Order_detail = () => {
         {data.map((el, idx) => {
           return (
             <tbody
-              className="flex items-center p-4 justify-between border-b"
+              className="flex items-center p-4 justify-between border-b font-bold "
               key={idx}
             >
-              <tr className="ml-8">
-                <td>
-                  <input type="checkbox" />
-                </td>
-              </tr>
               <tr className="flex items-center">
                 <td>
                   <Image
-                    className="w-48"
+                    className="w-48 hidden sm:flex"
                     alt="product"
                     src={require("../../Images/case.png")}
                   />
@@ -113,10 +100,10 @@ const Order_detail = () => {
                   <div className="text-sm text-gray-500">{el.model}</div>
                 </td>
               </tr>
-              <tr className="mr-20">
-                {/* <td>{MoneyConvert(el.price)}</td> */}
+              <tr className="">
+                <td>{MoneyConvert(el.price)} </td>
               </tr>
-              <tr className="mr-4">
+              <tr className="">
                 <HandleQuantity idx={idx} />
               </tr>
             </tbody>

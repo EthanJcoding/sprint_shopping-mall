@@ -26,7 +26,7 @@ function Header() {
             router.push({ pathname: "/order_page" });
           }}
         >
-          찜목록
+          장바구니
         </button>
       </div>
     </div>
