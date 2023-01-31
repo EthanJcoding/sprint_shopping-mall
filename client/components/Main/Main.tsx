@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getProduct } from "../../firebase";
 import { useState, useEffect, useCallback } from "react";
@@ -48,12 +47,6 @@ const Main = () => {
                 newData(arr);
               }}
             >
-              {/* <Image
-                alt="product"
-                width={550}
-                height={500}
-                src={require("../../Images/case.png")}
-              /> */}
               <img src={arr.img} />
             </button>
           </Link>
