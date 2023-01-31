@@ -30,6 +30,7 @@ const DEFAULT_SEO = {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
+      <DefaultSeo {...DEFAULT_SEO} />
       <PersistGate persistor={persistor} loading={null}>
         <Component {...pageProps} />
       </PersistGate>
