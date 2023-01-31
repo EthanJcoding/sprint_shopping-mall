@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Head>
         <title>filll Shoping_mall</title>
-        <meta name="description" content="Nextjs 뿌시기" />
+        <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
