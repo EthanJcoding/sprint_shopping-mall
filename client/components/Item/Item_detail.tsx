@@ -64,16 +64,16 @@ const Item_detail = ({ value }: Product) => {
         </div>
       </div>
       <div className="place-content-center md:px-12 mx-7">
-        <div className="hidden md:flex">기기선택</div>
+        <div className="hidden md:flex mb-3">기기선택</div>
         <div className="">
           <div className="flex justify-center md:justify-start">
-            <select className="mr-3 my-3" value={brand} onChange={onSelect}>
+            <select className="mr-3" value={brand} onChange={onSelect}>
               <option value="0">기종 선택</option>
               <option value="Apple">Apple</option>
               <option value="Galaxy">Galaxy</option>
             </select>
             {brand === value ? (
-              <select className="mr-3 my-3" value={brand} onChange={onSelect}>
+              <select className="" value={brand} onChange={onSelect}>
                 <option value="기종 선택">기기 선택</option>
               </select>
             ) : null}
